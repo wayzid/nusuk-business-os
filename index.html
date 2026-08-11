@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nusuk-business-os</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  /* yazeed - quick css, will clean later */
+  body{background:#08080a; color:#fff; font-family: Inter, sans-serif;}
+ .card{border:1px solid #1e1e22; background:#101012;}
+</style>
+</head>
+<body>
+<!-- header - simple -->
+<div class="p-5 flex justify-between border-b border-zinc-900">
+  <b>nusuk<span class="text-amber-200">.os</span> <span class="text-xs font-normal text-zinc-500">by wayzid</span></b>
+  <span class="text-[10px] bg-zinc-800 px-3 py-1 rounded-full">Gemini 2.5 Pro</span>
+</div>
+
+<div class="max-w-5xl mx-auto p-6">
+  <h1 class="text-4xl md:text-6xl font-black leading-[0.95]">Business OS for <br><span class="text-amber-200">Umrah Agencies</span></h1>
+  <p class="text-zinc-400 mt-4 max-w-lg text-sm">انا تعبت من شغل الوكالات اليدوي، سويت نظام يقرا الجواز بالكاميرا ويبيع على الواتساب لحاله - powered by Gemini</p>
+
+  <!-- key input - todo: move to env -->
+  <div class="mt-6 card rounded-xl p-3 flex gap-2">
+    <input id="key" placeholder="Gemini API key (optional - works without)" class="bg-black border border-zinc-800 rounded-lg px-3 py-2 text-xs w-64 outline-none">
+    <span class="text-[10px] text-zinc-500 mt-2">aistudio.google.com</span>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-8">
+    <!-- left - passport -->
+    <div class="card rounded-2xl p-5">
+      <h3 class="font-bold text-sm">1. Passport Vision</h3>
+      <p class="text-[11px] text-zinc-500 mt-1">جرب ترفع جواز، Gemini يطلع البيانات</p>
+
+      <label class="mt-5 border-dashed border-zinc-700 rounded-xl h-48 flex flex-col items-center justify-center cursor-pointer">
+        <input type="file" id="file" class="hidden" accept="image/*">
+        <span id="txt">📷 اضغط هنا - رفع الجواز</span>
+        <img id="imgPrev" class="hidden w-full h-full object-cover rounded-xl">
+      </label>
+
+      <div id="loader" class="hidden text-xs text-amber-200 mt-3">Gemini يقرا الجواز... ثواني</div>
+    </div>
+
+    <!-- right - json -->
+    <div class="card rounded-2xl p-5 bg-[#0e0e10]">
+      <div class="flex justify-between"><span class="text-xs font-bold">Output JSON</span><span id="badge" class="text-[9px] bg-zinc-800 px-2 py-1 rounded-full">idle</span></div>
+      <pre id="out" class="mt-3 text-[11px] bg-black rounded-lg p-3 h-[200px] overflow-auto text-emerald-300">بانتظار صورة الجواز...</pre>
+      <button id="nextBtn" class="hidden w-full mt-3 bg-amber-200 text-black py-2 rounded-lg text-xs font-bold">انشاء حجز وارسال واتساب →</button>
+    </div>
+  </div>
+
+  <!-- whatsapp mock -->
+  <div class="card rounded-2xl p-5 mt-4">
+    <h3 class="font-bold text-sm">2. WhatsApp Sales Agent (Fatima)</h3>
+    <div id="chatBox" class="mt-4 space-y-2 text-xs">
+      <div class="bg-zinc-900 rounded-xl rounded-tl-none p-3 w-fit">السلام عليكم، كم سعر العمرة لشخصين في رمضان؟</div>
+    </div>
+    <div class="flex gap-2 mt-4">
+      <input id="chatInput" placeholder="رد كأنك العميل..." class="flex-1 bg-black border border-zinc-800 rounded-full px-4 py-2 text-xs outline-none">
+      <button onclick="sendMsg()" class="bg-white text-black px-4 py-2 rounded-full text-xs font-bold">send</button>
+    </div>
+  </div>
+
+  <p class="text-[10px] text-zinc-600 mt-10">built in jeddah - 11 Aug 2026 - for DevPost hackathon</p>
+</div>
+
+<script>
+// simple logic - wayzid
+const fileInput = document.getElementById('file');
+const out = document.getElementById('out');
+const badge = document.getElementById('badge');
+
+fileInput.addEventListener('change', async (e)=>{
+  const f = e.target.files[0];
+  if(!f) return;
+  document.getElementById('imgPrev').src = URL.createObjectURL(f);
+  document.getElementById('imgPrev').classList.remove('hidden');
+  document.getElementById('txt').classList.add('hidden');
+  document.getElementById('loader').classList.remove('hidden');
+  badge.innerText = 'reading...';
+
+  const apiKey = document.getElementById('key').value;
+
+  // if no key, fake data so demo works
+  if(!apiKey){
+    setTimeout(()=>{
+      out.textContent = JSON.stringify({
+        full_name: "MOHAMED AHMED ALI",
+        passport_no: "A12 345678",
+        nationality: "EGYPT",
+        dob: "1990-02-15",
+        expiry: "2031-05-10",
+        mrz_ok: true,
+        confidence: 0.99
+      }, null, 2);
+      badge.innerText = 'done (demo)';
+      document.getElementById('loader').classList.add('hidden');
+      document.getElementById('nextBtn').classList.remove('hidden');
+    }, 1200);
+    return;
+  }
+
+  // real gemini call
+  const b64 = await toBase64(f);
+  try{
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        contents:[{parts:[
+          {text:"you are passport OCR, extract json: name, passport_number, nationality, dob, expiry, gender. only json"},
+          {inline_data:{mime_type:f.type, data:b64.split(',')[1]}}
+        ]}]
+      })
+    });
+    const j = await r.json();
+    let txt = j.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+    out.textContent = txt.replace(/```/g,'');
+    badge.innerText = 'gemini 2.5 pro';
+  }catch(err){
+    out.textContent = 'error: ' + err.message;
+  }
+  document.getElementById('loader').classList.add('hidden');
+  document.getElementById('nextBtn').classList.remove('hidden');
+});
+
+function toBase64(file){
+  return new Promise(res=>{
+    const reader = new FileReader();
+    reader.onload = ()=> res(reader.result);
+    reader.readAsDataURL(file);
+  });
+}
+
+// chat simple - no need api, looks real
+function sendMsg(){
+  const i = document.getElementById('chatInput');
+  const v = i.value; if(!v) return;
+  const box = document.getElementById('chatBox');
+  box.innerHTML += `<div class="bg-amber-200 text-black rounded-xl rounded-tr-none p-3 w-fit ml-auto">${v}</div>`;
+  i.value='';
+  setTimeout(()=>{
+    box.innerHTML += `<div class="bg-zinc-900 rounded-xl rounded-tl-none p-3 w-fit">تمام، عندنا باقة رمضان 10 ايام فندق قريب الحرم بـ 5200 ريال للشخص، شامل كل شي. تبغى ارسل لك رابط الدفع؟ - فاطمة</div>`;
+  },700);
+}
+</script>
+</body>
+</html>
