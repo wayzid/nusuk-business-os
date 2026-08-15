@@ -1,36 +1,57 @@
-نسك OS
-لوحة التحكم
-الحجوزات
-العملاء
-الباقات
-ارباح اليوم
-0 ريال
-
-معتمرين اليوم
-0
-تكلفة الجواز
-7 ريال
-متوسط الباقة
-1300 ريال
-عمولتنا
-0 ريال
-Gemini 2.5 Pro Vision
-اسحب صورة الجواز هنا يقرأ تلقائي بـ Gemini رفع الجواز
-جاري القراءة بـ Gemini...
-بيانات الجوازمقروءة حقيقية
-لم يتم الرفع بعد
-الاسم: -
-رقم الجواز: -
-اختر الباقة للمعتمر
-اقتصادية
-900 ريال
-ربحك 7 ريال
-الراحة
-1300 ريال
-ربحك 30 ريال
-VIP
-1900 ريال
-ربحك 70 ريال
-وكيل المبيعات - واتسابمتصل
-مرحبا، ارسل صورة جوازك وسأجهز لك الباقة المناسبة
-ارسال
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نسك OS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<style>body{font-family:'IBM Plex Sans Arabic',sans-serif}</style>
+</head>
+<body class="bg-[#0a0a0a] text-white text-[12px]">
+<div class="flex min-h-screen">
+<div class="w-[200px] border-l border-zinc-800 p-3 hidden md:block">
+<div class="font-black text-[18px]">نسك OS</div>
+<div class="text-[9px] text-zinc-500">70 ريال على كل VIP</div>
+<div class="mt-6 p-3 bg-emerald-600 rounded"><div class="text-[9px]">ارباحك اليوم</div><div class="font-bold text-[20px]" id="p1">0 ريال</div><div class="text-[10px] mt-1" id="d1">0 معتمر</div></div>
+</div>
+<div class="flex-1 p-3">
+<div class="grid grid-cols-3 gap-2">
+<div class="bg-[#111] border border-zinc-800 rounded p-2"><div class="text-[9px] text-zinc-500">المعتمرين</div><div class="text-[18px] font-bold" id="c">0</div></div>
+<div class="bg-[#111] border border-zinc-800 rounded p-2"><div class="text-[9px] text-zinc-500">ربح الجواز</div><div class="text-[18px] font-bold text-emerald-400">70</div></div>
+<div class="bg-[#111] border border-zinc-800 rounded p-2"><div class="text-[9px] text-zinc-500">عمولتك</div><div class="text-[18px] font-bold text-emerald-400" id="com">0</div></div>
+</div>
+<div class="grid md:grid-cols-12 gap-3 mt-3">
+<div class="md:col-span-7 bg-[#111] border border-zinc-800 rounded p-3">
+<div class="text-[11px] font-bold">1- ارفع الجواز</div>
+<label id="drop" class="mt-3 h-[140px] border border-dashed border-zinc-700 rounded flex flex-col items-center justify-center cursor-pointer">
+<input id="file" type="file" accept="image/*" class="hidden">
+<span id="ph" class="text-[11px] text-zinc-400">اسحب الجواز هنا</span>
+<img id="prev" class="hidden w-[70px] mt-2 rounded">
+</label>
+<div id="ld" class="hidden mt-2 text-[10px] text-emerald-400">جاري القراءة...</div>
+<div class="mt-3 text-[11px] font-bold">2- اختر الباقة</div>
+<div class="grid grid-cols-3 gap-2 mt-2">
+<div onclick="sel(1)" id="k1" class="border border-zinc-800 p-2 rounded cursor-pointer"><div>اقتصادية</div><div class="font-bold">900</div><div class="text-[9px]">ربح 7</div></div>
+<div onclick="sel(2)" id="k2" class="border border-zinc-800 p-2 rounded cursor-pointer"><div>الراحة</div><div class="font-bold">1300</div><div class="text-[9px]">ربح 30</div></div>
+<div onclick="sel(3)" id="k3" class="border border-white bg-white text-black p-2 rounded cursor-pointer"><div>VIP</div><div class="font-bold">1900</div><div class="text-[9px]">ربح 70</div></div>
+</div>
+</div>
+<div class="md:col-span-5 bg-[#111] border border-zinc-800 rounded p-3">
+<div class="text-[11px] font-bold">مندوب واتساب</div>
+<div id="chat" class="mt-3 space-y-2 h-[300px] overflow-auto"><div class="bg-zinc-800 p-2 rounded">النظام: ارفع جواز عشان ابيع VIP</div></div>
+</div>
+</div>
+</div>
+</div>
+<script>
+let curP=0,curC=0,selP=70;
+const file=document.getElementById('file'),drop=document.getElementById('drop');
+file.onchange=h;drop.ondragover=e=>{e.preventDefault();drop.classList.add('bg-zinc-900')};drop.ondragleave=()=>drop.classList.remove('bg-zinc-900');drop.ondrop=e=>{e.preventDefault();drop.classList.remove('bg-zinc-900');h({target:{files:e.dataTransfer.files}})};
+function sel(n){document.getElementById('k1').className='border border-zinc-800 p-2 rounded cursor-pointer';document.getElementById('k2').className='border border-zinc-800 p-2 rounded cursor-pointer';document.getElementById('k3').className='border border-zinc-800 p-2 rounded cursor-pointer';document.getElementById('k'+n).className='border border-white bg-white text-black p-2 rounded cursor-pointer';selP=n==1?7:n==2?30:70;}
+function b64(f){return new Promise(r=>{let R=new FileReader();R.onload=()=>r(R.result.split(',')[1]);R.readAsDataURL(f);});}
+async function h(e){let f=e.target.files[0];if(!f)return;let u=URL.createObjectURL(f);let p=document.getElementById('prev');p.src=u;p.classList.remove('hidden');document.getElementById('ph').classList.add('hidden');document.getElementById('ld').classList.remove('hidden');try{let b=await b64(f);let res=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=YOUR_GEMINI_API_KEY",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:[{parts:[{text:"اقرأ الجواز وارجع JSON فقط {\"fullName\":\"\",\"passportNo\":\"\"}"},{inline_data:{mime_type:f.type,data:b}}]}]})});let j=await res.json();let t=j.candidates[0].content.parts[0].text;let d=JSON.parse(t.replace(/```json|```/g,''));curC++;curP+=selP;document.getElementById('c').textContent=curC;document.getElementById('p1').textContent=curP+" ريال";document.getElementById('d1').textContent=curC+" معتمر";document.getElementById('com').textContent=curP;let ch=document.getElementById('chat');ch.innerHTML+=`<div class="bg-emerald-600 p-2 rounded">تم ${d.fullName||''} - VIP ربح ${selP}</div>`;ch.scrollTop=ch.scrollHeight;}catch(er){}document.getElementById('ld').classList.add('hidden');}
+sel(3);
+</script>
+</body>
+</html>
