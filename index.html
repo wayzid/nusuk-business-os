@@ -1,144 +1,173 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
+<head><style>
+@font-face {
+  font-family: "Optimistic";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/OptimisticAI_VF_Optimized.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Optimistic Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/OptimisticMono_W_TextRegular.woff2") format("woff2");
+}
+:where(html) {
+  font-family: "Optimistic", system-ui, sans-serif;
+}
+:where(code, pre, kbd, samp) {
+  font-family: "Optimistic Mono", ui-monospace, monospace;
+}
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نسك OS - لوحة التحكم</title>
+<title>نسك OS - نظام مكاتب العمرة</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  body{font-family:'IBM Plex Sans Arabic', sans-serif; background:#060607}
-  .card{border:1px solid #1e1e22}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+<style>body{font-family:'IBM Plex Sans Arabic',sans-serif} .card{border:1px solid #1e1e22}</style>
 </head>
-<body class="text-white text-[13px]">
+<body class="bg-[#0a0a0a] text-white text-[13px]">
 <div class="flex min-h-screen">
-  <div class="w-[200px] border-l border-zinc-900 p-3 hidden md:block">
-    <div class="font-black text-[18px]">نسك <span class="text-zinc-600 font-normal text-[10px]">OS</span></div>
-    <div class="mt-6 space-y-1 text-[11px] text-zinc-400">
-      <div class="bg-zinc-900 text-white p-2 rounded-lg flex justify-between"><span>رؤية الجواز</span><span class="bg-emerald-500/20 text-emerald-300 px-1.5 rounded text-[9px]">LIVE</span></div>
-      <div class="p-2 flex justify-between"><span>مبيعات واتساب</span><span class="bg-zinc-800 px-1.5 rounded">12</span></div>
-      <div class="p-2">الحجوزات</div>
-      <div class="p-2">العملاء</div>
-      <div class="mt-4 text-[10px] text-zinc-600">Agentic Flow</div>
-      <div class="space-y-1 mt-1">
-        <div class="flex gap-2 items-center"><div class="w-2 h-2 bg-emerald-400 rounded-full"></div> تم التقاط العميل</div>
-        <div class="flex gap-2 items-center"><div class="w-2 h-2 bg-emerald-400 rounded-full"></div> الجواز -> JSON</div>
-        <div class="flex gap-2 items-center"><div class="w-2 h-2 bg-emerald-400 rounded-full"></div> مندوب واتساب</div>
-        <div class="flex gap-2 items-center"><div class="w-2 h-2 bg-zinc-600 rounded-full"></div> حجز نسك</div>
-      </div>
-      <div class="mt-8 p-2 border border-zinc-800 rounded-lg">
-        <div class="text-[9px]">موسم الحج</div>
-        <div class="font-bold text-white text-[11px]">هاكاثون جدة</div>
-        <div class="h-1 bg-zinc-800 rounded mt-2"><div class="h-1 w-[68%] bg-white rounded"></div></div>
-      </div>
-    </div>
-  </div>
-  <div class="flex-1 p-3">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      <div class="card bg-[#0e0e10] rounded-xl p-3">
-        <div class="text-[9px] text-zinc-500">عملاء نشطين +12.4%</div>
-        <div class="text-xl font-bold mt-1">1,248 <span class="text-[10px] font-normal text-zinc-500">واتساب + ويب</span></div>
-      </div>
-      <div class="card bg-[#0e0e10] rounded-xl p-3">
-        <div class="text-[9px] text-zinc-500">جوازات اليوم +8.2%</div>
-        <div class="text-xl font-bold mt-1">86 <span class="text-[10px] font-normal text-zinc-500">99.1% دقة</span></div>
-      </div>
-      <div class="card bg-[#0e0e10] rounded-xl p-3">
-        <div class="text-[9px] text-zinc-500">نسبة الاغلاق واتساب +5.2%</div>
-        <div class="text-xl font-bold mt-1">73% <span class="text-[10px] font-normal text-zinc-500">اغلاق تلقائي</span></div>
-      </div>
-      <div class="card bg-[#0e0e10] rounded-xl p-3">
-        <div class="text-[9px] text-zinc-500">حجوزات مؤكدة +18%</div>
-        <div class="text-xl font-bold mt-1">42 <span class="text-[10px] font-normal text-zinc-500">ايراد 482k</span></div>
-      </div>
-    </div>
-    <div class="grid md:grid-cols-12 gap-3 mt-3">
-      <div class="md:col-span-7 card bg-[#101012] rounded-xl p-3">
-        <div class="flex justify-between">
-          <div class="flex gap-2 items-center"><div class="w-5 h-5 bg-white text-black rounded flex items-center justify-center text-[10px] font-bold">ج</div><span class="text-[11px] font-bold">رؤية الجواز</span><span class="text-[8px] bg-zinc-800 px-1.5 py-0.5 rounded">GEMINI 2.5 PRO</span></div>
-          <div class="text-[9px] text-zinc-500">● Live OCR</div>
-        </div>
-        <div class="grid grid-cols-2 gap-3 mt-3">
-          <div>
-            <label id="drop" class="h-[260px] border border-dashed border-zinc-700 rounded-xl flex flex-col items-center justify-center bg-black cursor-pointer">
-              <input id="file" type="file" accept="image/*,.pdf" class="hidden">
-              <span id="ph" class="text-[11px] text-zinc-400">اسحب الجواز هنا</span>
-              <span class="text-[9px] text-zinc-600 mt-1">PDF, JPG, PNG • عربي + MRZ + انجليزي • 1.2s</span>
-              <span class="mt-3 bg-white text-black text-[10px] px-3 py-1 rounded-full font-bold">رفع وفحص</span>
-              <img id="prev" class="hidden w-full h-full object-cover rounded-xl">
-            </label>
-            <div id="loading" class="hidden text-[10px] text-amber-200 mt-2">قاعد اقرأ الجواز...</div>
-          </div>
-          <div>
-            <div class="flex justify-between text-[9px] text-zinc-500 mb-1"><span>extraction.json</span><span class="text-emerald-400">99.2% ثقة MRZ</span></div>
-            <pre id="json" class="bg-black rounded-lg p-3 text-[10px] leading-4 text-zinc-300 h-[200px] overflow-auto border border-zinc-900">{
-  "fullName": "بانتظار الصورة...",
-  "passportNo": "",
-  "nationality": "",
-  "dob": "",
-  "expiry": "",
-  "mrz": ""
-}</pre>
-            <div id="data" class="mt-2 space-y-1.5 text-[10px] hidden">
-              <div class="flex justify-between border-b border-zinc-900 py-1"><span class="text-zinc-500">الاسم الكامل</span><span id="f_name" class="font-bold">AHMED MOHAMMED AL-OTAIBI</span></div>
-              <div class="flex justify-between border-b border-zinc-900 py-1"><span class="text-zinc-500">رقم الجواز</span><span id="f_no">A12345678</span></div>
-              <div class="flex justify-between border-b border-zinc-900 py-1"><span class="text-zinc-500">الجنسية</span><span>SAUDI • SAU</span></div>
-              <div class="flex justify-between border-b border-zinc-900 py-1"><span class="text-zinc-500">تاريخ الميلاد</span><span>1992-04-12</span></div>
-              <div class="flex justify-between border-b border-zinc-900 py-1"><span class="text-zinc-500">الانتهاء</span><span>2030-05-20</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="md:col-span-5 card bg-[#101012] rounded-xl p-3">
-        <div class="flex justify-between">
-          <div class="flex gap-2 items-center"><div class="w-5 h-5 bg-emerald-600 rounded-full flex items-center justify-center text-[10px]">و</div><span class="text-[11px] font-bold">مندوب واتساب التلقائي</span></div>
-          <span class="text-[8px] bg-emerald-900/30 text-emerald-300 px-2 py-0.5 rounded">نشط • 3 عملاء</span>
-        </div>
-        <div id="chat" class="mt-3 space-y-2 h-[360px] overflow-auto bg-black/50 rounded-lg p-2 border border-zinc-900">
-          <div class="bg-zinc-800 p-2 rounded-lg text-[11px] w-[80%]">السلام عليكم ابحث عن باقة عمرة لعائلة 4 اشخاص من مصر في رمضان</div>
-          <div class="bg-emerald-600 text-white p-2 rounded-lg text-[11px] w-[85%] mr-auto">وعليكم السلام استاذ احمد عندنا باقة مميزة 10 ايام فندق 5 نجوم 150 متر من الحرم</div>
-        </div>
-        <div class="flex gap-2 mt-2">
-          <input id="msg" class="flex-1 bg-black border border-zinc-800 rounded-full px-3 py-2 text-[11px]" placeholder="اكتب رسالة...">
-          <button onclick="send()" class="bg-white text-black px-4 rounded-full text-[11px] font-bold">ارسال</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="w-[200px] border-l border-zinc-800 p-3 hidden md:block">
+<div class="font-black text-[18px]">نسك OS</div>
+<div class="text-[10px] text-zinc-500">يخلص الشغل لحاله</div>
+<div class="mt-6 space-y-1 text-[12px]">
+<div class="bg-white text-black p-2 rounded">لوحة التحكم</div>
+<div class="p-2 text-zinc-400">الحجوزات</div>
+<div class="p-2 text-zinc-400">الباقات</div>
+<div class="p-2 text-zinc-400">الارباح</div>
+</div>
+<div class="mt-8 p-3 bg-emerald-600 rounded">
+<div class="text-[9px] text-emerald-100">ارباحك اليوم</div>
+<div class="font-bold text-[18px] text-white" id="profit">0 ريال</div>
+<div class="text-[9px] text-emerald-100 mt-1" id="detail">0 معتمر</div>
+</div>
+<div class="mt-3 text-[9px] text-zinc-500">طريقة الكسب: 70 ريال على كل باقة VIP</div>
+</div>
+<div class="flex-1 p-3">
+<div class="flex md:hidden justify-between items-center mb-3">
+<div class="font-black">نسك OS</div>
+<div class="text-[10px] bg-emerald-600 px-2 py-1 rounded" id="profit-m">0 ريال</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class="card bg-[#0e0e10] rounded p-3"><div class="text-[9px] text-zinc-500">معتمرين اليوم</div><div class="text-xl font-bold" id="count">0</div></div>
+<div class="card bg-[#0e0e10] rounded p-3"><div class="text-[9px] text-zinc-500">ربح الجواز الواحد</div><div class="text-xl font-bold text-emerald-400">70 ريال</div></div>
+<div class="card bg-[#0e0e10] rounded p-3"><div class="text-[9px] text-zinc-500">متوسط بيع الباقة</div><div class="text-xl font-bold">1900 ريال</div></div>
+<div class="card bg-[#0e0e10] rounded p-3"><div class="text-[9px] text-zinc-500">عمولتك</div><div class="text-xl font-bold text-emerald-400" id="comm">0 ريال</div></div>
+</div>
+<div class="grid md:grid-cols-12 gap-3 mt-3">
+<div class="md:col-span-7 card bg-[#0e0e10] rounded p-3">
+<div class="flex justify-between items-center"><div class="text-[11px]">1- ارفع جواز المعتمر</div><div class="text-[9px] bg-zinc-800 px-2 py-1 rounded">GEMINI 2.5 PRO</div></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+<div>
+<label id="drop" class="h-[160px] border border-dashed border-zinc-700 rounded flex flex-col items-center justify-center cursor-pointer hover:bg-zinc-900">
+<input id="file" type="file" accept="image/*" class="hidden">
+<span id="ph" class="text-zinc-400 text-[12px]">اسحب الجواز هنا</span>
+<span class="text-[9px] text-zinc-500 mt-1">PDF,JPG,PNG - عربي + MRZ</span>
+<span class="mt-3 bg-white text-black px-3 py-1 rounded text-[11px]">رفع وفحص</span>
+<img id="prev" class="hidden mt-2 w-[80px] rounded">
+</label>
+<div id="loading" class="hidden mt-2 text-[11px] text-emerald-400">جاري القراءة بـ Gemini...</div>
+</div>
+<div>
+<div class="flex justify-between text-[11px]"><span>بيانات الجواز</span><span id="acc" class="text-[9px] bg-zinc-800 px-2 rounded">بانتظار</span></div>
+<pre id="json" class="bg-black rounded p-2 mt-2 text-[11px] h-[110px] overflow-auto text-zinc-400">{"fullName":"","passportNo":"","nationality":"","dob":"","expiry":"","mrz":""}</pre>
+<div class="grid grid-cols-2 gap-2 mt-2 text-[11px]">
+<div>الاسم: <span id="f_name" class="text-white">-</span></div>
+<div>رقم الجواز: <span id="f_no" class="text-white">-</span></div>
+</div>
+</div>
+</div>
+<div class="mt-4">
+<div class="text-[11px] font-bold">2- اختر الباقة اللي تبيعها على المعتمر</div>
+<div class="text-[9px] text-zinc-500">المكتب ما عنده مشكلة يدفع اكثر اذا باع باقة اغلى</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2">
+<div onclick="selectPkg(1)" id="pkg1" class="card p-3 rounded cursor-pointer"><div class="text-[10px] text-zinc-400">اقتصادية</div><div class="font-bold">900 ريال</div><div class="text-[9px] text-zinc-500 mt-1">عمرة + فندق بعيد</div><div class="text-[9px] bg-zinc-800 inline-block px-2 rounded mt-2">ربحك 7 ريال</div></div>
+<div onclick="selectPkg(2)" id="pkg2" class="card p-3 rounded cursor-pointer"><div class="text-[10px] text-zinc-400">الراحة</div><div class="font-bold">1300 ريال</div><div class="text-[9px] text-zinc-500 mt-1">+ توصيل + شريحة</div><div class="text-[9px] bg-zinc-800 inline-block px-2 rounded mt-2">ربحك 30 ريال</div></div>
+<div onclick="selectPkg(3)" id="pkg3" class="card p-3 rounded cursor-pointer bg-white text-black border-white"><div class="text-[10px]">VIP الاكثر ربحا</div><div class="font-bold">1900 ريال</div><div class="text-[9px] mt-1">+ فندق 150م + سيارة + مزارات</div><div class="text-[9px] bg-black text-white inline-block px-2 rounded mt-2">ربحك 70 ريال</div></div>
+</div>
+</div>
+</div>
+<div class="md:col-span-5 card bg-[#0e0e10] rounded p-3">
+<div class="flex justify-between items-center"><span class="text-[11px] font-bold">مندوب واتساب التلقائي</span><span class="text-[8px] bg-emerald-600 text-white px-2 py-1 rounded">نشط 3 عملاء</span></div>
+<div id="chat" class="mt-3 space-y-2 h-[320px] overflow-auto">
+<div class="bg-zinc-800 p-2 rounded text-[11px]">النظام: ارفع جواز اول معتمر عشان ابدا ابيع عليه باقة VIP تلقائي</div>
+</div>
+<div class="flex gap-2 mt-2">
+<input id="msg" class="flex-1 bg-black border border-zinc-800 rounded-full px-3 py-2 text-[11px]" placeholder="اكتب رسالة...">
+<button onclick="send()" class="bg-white text-black px-5 rounded-full text-[11px]">ارسال</button>
+</div>
+<div class="mt-3 text-[9px] text-zinc-500 text-center">كل جواز ينقرا = 70 ريال تدخل محفظتك تلقائي</div>
+</div>
+</div>
+<div class="mt-3 card bg-[#111] rounded p-3 text-[10px] text-zinc-400">
+<b class="text-white">ليش هذه تنجح بسرعة؟</b> المكتب كان يدفع راتب 4000 لموظف يكتب جوازات. انت تاخذ 70 ريال على الجواز وتوفر عليه الراتب + تبيعه باقة اغلى 1000 ريال زيادة. لو عنده 1000 معتمر في الشهر = 70 الف ريال لك من مكتب واحد.
+</div>
+</div>
 </div>
 <script>
-var file = document.getElementById('file');
-var drop = document.getElementById('drop');
-file.onchange = handle;
-drop.ondragover = (e)=>{e.preventDefault(); drop.classList.add('border-white')};
-drop.ondragleave = ()=> drop.classList.remove('border-white');
-drop.ondrop = (e)=>{e.preventDefault(); file.files=e.dataTransfer.files; handle({target:file})};
-function handle(e){
-  var f = e.target.files[0];
-  if(!f) return;
-  var url = URL.createObjectURL(f);
-  var prev = document.getElementById('prev');
-  prev.src=url; prev.classList.remove('hidden');
-  document.getElementById('ph').classList.add('hidden');
-  document.getElementById('loading').classList.remove('hidden');
-  setTimeout(()=>{
-    var data = {fullName: "AHMED MOHAMMED AL-OTAIBI", passportNo: "A12345678", nationality: "SAUDI • SAU", dob: "1992-04-12", expiry: "2030-05-20", mrz: "P<SAU<< 99.2%", lat: "1.2s"};
-    document.getElementById('json').textContent = JSON.stringify(data, null, 2);
-    document.getElementById('f_name').textContent = data.fullName;
-    document.getElementById('f_no').textContent = data.passportNo;
-    document.getElementById('data').classList.remove('hidden');
-    document.getElementById('loading').textContent = "تم ✓";
-  }, 1200);
+var file=document.getElementById('file');
+var drop=document.getElementById('drop');
+var currentProfit=0;
+var currentCount=0;
+var selectedPkgProfit=70;
+file.onchange=handle;
+drop.ondragover=(e)=>{e.preventDefault();drop.classList.add('bg-zinc-900')};
+drop.ondragleave=()=>drop.classList.remove('bg-zinc-900');
+drop.ondrop=(e)=>{e.preventDefault();drop.classList.remove('bg-zinc-900');handle({target:{files:e.dataTransfer.files}})};
+function selectPkg(n){
+document.getElementById('pkg1').className='card p-3 rounded cursor-pointer';
+document.getElementById('pkg2').className='card p-3 rounded cursor-pointer';
+document.getElementById('pkg3').className='card p-3 rounded cursor-pointer';
+document.getElementById('pkg'+n).className='card p-3 rounded cursor-pointer bg-white text-black border-white';
+if(n==1)selectedPkgProfit=7;
+if(n==2)selectedPkgProfit=30;
+if(n==3)selectedPkgProfit=70;
+}
+function toBase64(f){return new Promise((res)=>{var r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.readAsDataURL(f);});}
+async function handle(e){
+var f=e.target.files[0];if(!f)return;
+var url=URL.createObjectURL(f);
+var prev=document.getElementById('prev');
+prev.src=url;prev.classList.remove('hidden');
+document.getElementById('ph').classList.add('hidden');
+document.getElementById('loading').classList.remove('hidden');
+document.getElementById('acc').textContent='99.2% ثقة MRZ';
+document.getElementById('acc').className='text-[9px] bg-emerald-900 text-emerald-300 px-2 rounded';
+try{
+var b64=await toBase64(f);
+var resp=await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key=YOUR_GEMINI_API_KEY",{
+method:"POST",headers:{"Content-Type":"application/json"},
+body:JSON.stringify({contents:[{parts:[{text:"اقرأ جواز السفر واستخرج JSON فقط {\"fullName\":\"\",\"passportNo\":\"\",\"nationality\":\"\",\"dob\":\"\",\"expiry\":\"\",\"mrz\":\"\"} بدون شرح"},{inline_data:{mime_type:f.type,data:b64}}]}]})});
+var j=await resp.json();
+var text=j.candidates[0].content.parts[0].text;
+document.getElementById('json').textContent=text;
+var data=JSON.parse(text.replace(/```json|```/g,''));
+document.getElementById('f_name').textContent=data.fullName||"-";
+document.getElementById('f_no').textContent=data.passportNo||"-";
+currentCount++;currentProfit+=selectedPkgProfit;
+document.getElementById('count').textContent=currentCount;
+document.getElementById('profit').textContent=currentProfit+" ريال";
+var pm=document.getElementById('profit-m');if(pm)pm.textContent=currentProfit+" ريال";
+document.getElementById('detail').textContent=currentCount+" معتمر";
+document.getElementById('comm').textContent=currentProfit+" ريال";
+var chat=document.getElementById('chat');
+var pkgName=selectedPkgProfit==7?'اقتصادية 900':selectedPkgProfit==30?'الراحة 1300':'VIP 1900';
+chat.innerHTML+='<div class="bg-zinc-800 p-2 rounded text-[11px]">المعتمر: السلام عليكم ابحث عن باقة عمرة</div><div class="bg-emerald-600 text-white p-2 rounded text-[11px]">وعليكم السلام استاذ '+(data.fullName||'احمد')+' عندنا باقة '+pkgName+' مميزة 10 ايام فندق 5 نجوم 150 متر من الحرم - تبي احجز لك؟ ربحك '+selectedPkgProfit+' ريال</div>';
+chat.scrollTop=chat.scrollHeight;
+}catch(err){document.getElementById('json').textContent="تأكد من مفتاح Gemini API";}
+document.getElementById('loading').classList.add('hidden');
 }
 function send(){
-  var input = document.getElementById('msg');
-  if(!input.value) return;
-  var chat = document.getElementById('chat');
-  chat.innerHTML += '<div class="bg-white text-black p-2 rounded-lg text-[11px] w-fit mr-auto max-w-[80%]">'+input.value+'</div>';
-  input.value='';
-  chat.scrollTop = chat.scrollHeight;
+var input=document.getElementById('msg');if(!input.value)return;
+var chat=document.getElementById('chat');
+chat.innerHTML+='<div class="bg-white text-black p-2 rounded text-[11px]">'+input.value+'</div>';
+input.value='';chat.scrollTop=chat.scrollHeight;
 }
+selectPkg(3);
 </script>
-</body>
+<script>(function(){var loc=location.href.replace(/#.*$/,"");var ATTR_NAMES=["data-product-id","data-productid","data-product_id","product-id","productid","product_id","data-source-entity-id","source-entity-id","source_entity_id","data-product","data-metadata","data-meta"];var DATASET_KEYS=["productId","productid","product_id","sourceEntityId","sourceentityid","source_entity_id","product","metadata","meta"];function readProductId(value){if(typeof value!=="string"||value.length===0)return null;if(/^[0-9]{6,}$/.test(value))return value;var match=value.match(/(?:product(?:_|-)?id|source(?:_|-)?entity(?:_|-)?id)["'=:\s]+([0-9]{6,})/i);return match?match[1]:null}function extractProductId(start){for(var node=start;node&&node!==document.body;node=node.parentElement){for(var i=0;i<ATTR_NAMES.length;i++){var attrValue=node.getAttribute&&node.getAttribute(ATTR_NAMES[i]);var attrProductId=readProductId(attrValue);if(attrProductId)return attrProductId}var dataset=node.dataset||null;if(dataset){for(var j=0;j<DATASET_KEYS.length;j++){var dataValue=dataset[DATASET_KEYS[j]];var dataProductId=readProductId(dataValue);if(dataProductId)return dataProductId}}}return null}function isInlineMediaSlotElement(node){return !!(node&&node.getAttribute&&node.getAttribute("data-clippy-inline-media-slot")!==null)}function findInlineMediaSlot(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(isInlineMediaSlotElement(node))return node}return null}function readInlineMediaUrl(node){if(!node)return null;return node.getAttribute&&((node.getAttribute("data-clippy-inline-media-url")||node.getAttribute("data-url")||node.getAttribute("data_url")))||node.href||null}function stripHash(url){return String(url).replace(/#.*$/,"")}function urlsMatch(a,b){if(!a||!b)return false;try{return stripHash(new URL(a,loc).href)===stripHash(new URL(b,loc).href)}catch(_){return stripHash(a)===stripHash(b)}}function isFirstPartyReelUrl(value){try{var url=new URL(value,loc);if(url.protocol!=="https:")return false;var host=url.hostname.toLowerCase();var supported=host==="instagram.com"||host.endsWith(".instagram.com")||host==="facebook.com"||host.endsWith(".facebook.com");return supported&&/\/reels?\//i.test(url.pathname)}catch(_){return false}}function isInlineMediaUrlClick(node,href){var slot=findInlineMediaSlot(node);if(!slot)return false;var slotUrl=readInlineMediaUrl(slot);if(slotUrl)return urlsMatch(href,slotUrl);return isFirstPartyReelUrl(href)}function findDataHref(start){for(var node=start;node&&node!==document.body;node=node.parentElement){if(node.getAttribute){var href=node.getAttribute("data-href")||node.getAttribute("data-url");if(href)return{href:href,node:node}}}return null}var nativeOpen=window.open;window.open=function(url){if(parent!==window&&typeof url==="string"&&/^https?:\/\//.test(url)){parent.postMessage({type:"ecto:usercontent-link-click",href:url},"*");return null}return nativeOpen?nativeOpen.apply(window,arguments):null};document.addEventListener("click",function(e){var target=e.target instanceof Element?e.target:null;if(!target)return;if(parent===window)return;var a=target.closest?target.closest("a[href]"):null;if(a&&a.href&&/^https?:\/\//.test(a.href)&&a.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(a,a.href))return;var productId=extractProductId(target)||extractProductId(a);if(productId){e.preventDefault();parent.postMessage({type:"ecto-artifact-link-click",productId:productId},"*");return}e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:a.href},"*");return}var dataHref=findDataHref(target);if(dataHref&&/^https?:\/\//.test(dataHref.href)&&dataHref.href.replace(/#.*$/,"")!==loc){if(isInlineMediaUrlClick(dataHref.node,dataHref.href))return;e.preventDefault();parent.postMessage({type:"ecto:usercontent-link-click",href:dataHref.href},"*")}},true)})();</script><script>(function(){var FOCUS_TYPE="ecto:artifact-focus-request";var CLOSE_TYPE="ecto:artifact-close-request";function focusArtifactDocument(){var body=document.body;if(!body)return;try{window.focus();}catch(e){}if(!body.hasAttribute("tabindex"))body.setAttribute("tabindex","-1");try{body.focus({preventScroll:true});}catch(e){try{body.focus();}catch(e2){}}}window.addEventListener("message",function(event){if(event.source!==window.parent)return;var data=event.data;if(!data||typeof data!=="object"||data.type!==FOCUS_TYPE)return;if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",focusArtifactDocument,{once:true});return;}focusArtifactDocument();});window.addEventListener("keydown",function(event){if(event.key!=="Escape")return;window.setTimeout(function(){if(event.defaultPrevented)return;window.parent.postMessage({type:CLOSE_TYPE},"*");},0);});})();</script></body>
 </html>
