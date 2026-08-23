@@ -2,88 +2,67 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>طريقة.زيد | NUSUK VIP</title>
-<script type="importmap">
-{ "imports": { "@snap/camera-kit": "https://cdn.jsdelivr.net/npm/@snap/camera-kit@1.6.5/dist/index.js" } }
-</script>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>طريقة.زيد VIP</title>
+<script type="importmap">{"imports":{"@snap/camera-kit":"https://cdn.jsdelivr.net/npm/@snap/camera-kit@1.6.5/dist/index.js"}}</script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#050505;color:#fff;font-family:Arial,sans-serif;overflow:hidden}
-#vip-canvas{position:fixed;inset:0;width:100vw;height:100vh;object-fit:cover;z-index:1}
-.overlay{position:fixed;inset:0;z-index:2;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:20px}
-.top-bar{display:flex;justify-content:space-between;align-items:center;pointer-events:auto}
-.logo{font-weight:900;letter-spacing:1px;background:linear-gradient(90deg,#D4AF37,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:20px}
-.badge{border:1px solid #D4AF37;padding:6px 14px;border-radius:20px;font-size:11px;color:#D4AF37}
-.bottom-bar{text-align:center;pointer-events:auto;padding-bottom:25px}
-h1{font-size:28px;margin-bottom:6px} h1 span{color:#D4AF37}
-p{opacity:.7;font-size:13px;margin-bottom:14px}
-.btn{background:#D4AF37;color:#000;border:none;padding:14px 28px;border-radius:30px;font-weight:900;font-size:15px;cursor:pointer;margin:4px;pointer-events:auto}
-.btn2{background:transparent;color:#D4AF37;border:1px solid #D4AF37}
-#status{margin-top:10px;font-size:11px;opacity:.6}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#000;color:#fff;height:100dvh;overflow:hidden}
+#vip-canvas{position:fixed;inset:0;width:100%;height:100%;object-fit:cover}
+.top{position:fixed;top:0;left:0;right:0;z-index:10;padding:14px 18px;display:flex;justify-content:space-between;background:linear-gradient(180deg,rgba(0,0,0,.8),transparent)}
+.badge{border:1px solid #D4AF37;color:#D4AF37;padding:6px 12px;border-radius:20px;font-size:10px}
+.sheet{position:fixed;bottom:0;left:0;right:0;z-index:10;background:rgba(15,15,15,.85);backdrop-filter:blur(20px);border-radius:28px 28px 0 0;padding:18px 18px 30px;border-top:1px solid rgba(212,175,55,.25)}
+.lensRow{display:flex;gap:10px;margin-bottom:16px}
+.lensCard{flex:1;background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.08);border-radius:18px;padding:14px;text-align:center}
+.lensCard.active{border-color:#D4AF37;background:rgba(212,175,55,.15)}
+.btnMain{width:100%;background:linear-gradient(90deg,#D4AF37,#F5E6A0);color:#000;border:0;padding:18px;border-radius:18px;font-weight:900;font-size:17px}
 </style>
 </head>
 <body>
 <canvas id="vip-canvas"></canvas>
-<div class="overlay">
-  <div class="top-bar">
-    <div class="logo">طريقة.زيد | TAREEQAH.ZAYD</div>
-    <div class="badge">a037c036 • VIP</div>
-  </div>
-  <div class="bottom-bar">
-    <h1>NUSUK <span>VIP</span></h1>
-    <p>عدسة طريقة.زيد الرسمية - تم الربط بنجاح</p>
-    <button id="startBtn" class="btn">تفعيل العدسة 👻</button>
-    <div>
-      <button id="lens1" class="btn btn2" style="display:none">Honey Glow</button>
-      <button id="lens2" class="btn btn2" style="display:none">Peachy Glow</button>
-    </div>
-    <div id="status">Group ID: a037c036-6d36-46f0-a41c-0ef2d707428d ✅</div>
-  </div>
+<div class="top"><div>طريقة.زيد | NUSUK VIP</div><div class="badge">مكة • برج الساعة</div></div>
+<div class="sheet">
+<div style="text-align:center;margin-bottom:14px"><b style="font-size:20px">عدسات <span style="color:#D4AF37">طريقة.زيد</span></b><br><span style="font-size:11px;opacity:.6">a037c036-6d36-46f0-a41c-0ef2d707428d</span></div>
+<div class="lensRow" id="lensRow" style="display:none">
+<div class="lensCard active" id="card1">🍯<br>Honey Glow</div>
+<div class="lensCard" id="card2">🍑<br>Peachy Glow</div>
+</div>
+<button id="startBtn" class="btnMain">تفعيل العدسة 👻</button>
+<div id="status" style="font-size:11px;text-align:center;margin-top:10px;opacity:.5">ID: a037c036-6d36-46f0-a41c-0ef2d707428d • جاهز</div>
 </div>
 <script type="module">
 import { bootstrapCameraKit } from "@snap/camera-kit";
 const apiToken = "eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzgyMjUwODE0LCJzdWIiOiI5OGEzNTdiOC1iYThjLTRiMGQtYmFlMC1jMmVkNWYwYWEzZWV-UFJPRFVDVElPTn41OWMyNDkyNi1jMDRjLTRkNmYtYTE4Yi04MTBjODc0MGJiMjYifQ.sXtTVLvaUNyKp0yRD6zfmCvQmGFD3DJgXRw1J63vHZE";
 const lensGroupId = "a037c036-6d36-46f0-a41c-0ef2d707428d";
-const lensesMap = {
-  honey: "5606da96-9b1f-4cf3-8d4b-1b39f63eadd4",
-  peachy: "530b4e91-f36f-4f3f-9a47-95cfa4f0b95f"
-};
-const canvas = document.getElementById('vip-canvas');
-const btn = document.getElementById('startBtn');
-const b1 = document.getElementById('lens1');
-const b2 = document.getElementById('lens2');
-const status = document.getElementById('status');
-let session, loadedLenses = [];
-async function start() {
-  try {
-    btn.innerText = "جاري التشغيل...";
-    const cameraKit = await bootstrapCameraKit({ apiToken });
-    session = await cameraKit.createSession({ liveRenderTarget: canvas });
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    await session.setSource(stream);
-    status.innerText = "جاري تحميل عدساتك...";
-    const result = await cameraKit.lensRepository.loadLensGroups([lensGroupId]);
-    loadedLenses = result.lenses;
-    if(loadedLenses.length > 0){
-      await session.applyLens(loadedLenses[0]);
-      status.innerText = "✅ شغالة - " + loadedLenses[0].name;
-      btn.style.display = "none";
-      b1.style.display = "inline-block";
-      b2.style.display = "inline-block";
-    } else {
-      status.innerText = "ما لقى عدسات - تأكد من تفعيلها في my-lenses";
-    }
-    await session.play();
-  } catch(e){
-    console.error(e);
-    status.innerText = "خطأ: " + e.message;
-    btn.innerText = "حاول مرة ثانية";
-  }
+const canvas=document.getElementById('vip-canvas');
+const btn=document.getElementById('startBtn');
+const row=document.getElementById('lensRow');
+const c1=document.getElementById('card1');
+const c2=document.getElementById('card2');
+const status=document.getElementById('status');
+let session,lenses=[];
+async function start(){
+ try{
+  btn.innerText="جاري تشغيل الكاميرا...";
+  const kit=await bootstrapCameraKit({apiToken});
+  session=await kit.createSession({liveRenderTarget:canvas});
+  const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'}});
+  await session.setSource(stream);
+  status.innerText="جاري تحميل العدسات...";
+  const res=await kit.lensRepository.loadLensGroups([lensGroupId]);
+  lenses=res.lenses;
+  if(lenses.length>0){
+   await session.applyLens(lenses[0]);
+   status.innerText="✅ Honey Glass Glow شغالة";
+   btn.style.display="none";
+   row.style.display="flex";
+  }else status.innerText="ما لقى عدسات";
+  await session.play();
+ }catch(e){status.innerText="خطأ: "+e.message; btn.innerText="حاول مرة ثانية";}
 }
-b1.onclick = async () => { if(loadedLenses[0]) await session.applyLens(loadedLenses[0]); status.innerText="Honey Glass Glow ✅"; };
-b2.onclick = async () => { if(loadedLenses[1]) await session.applyLens(loadedLenses[1]); status.innerText="Peachy Glass Glow ✅"; };
-btn.addEventListener('click', start);
+c1.onclick=async()=>{if(lenses[0]){await session.applyLens(lenses[0]); c1.classList.add('active'); c2.classList.remove('active');}};
+c2.onclick=async()=>{if(lenses[1]){await session.applyLens(lenses[1]); c2.classList.add('active'); c1.classList.remove('active');}};
+btn.addEventListener('click',start);
 </script>
 </body>
 </html>
