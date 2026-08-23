@@ -1,155 +1,80 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WAYZID VIP — Private Office for Global Executives | Mecca</title>
-<meta name="description" content="WAYZID VIP - Private concierge office for corporate Umrah & business travel. Private aviation, Clock Tower Royal Suites, executive protection.">
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;700&family=Tajawal:wght@500;700;900&display=swap" rel="stylesheet">
+<title>طريقة.زيد | NUSUK VIP Private Office</title>
+<script type="importmap">
+{
+  "imports": {
+    "@snap/camera-kit": "https://cdn.jsdelivr.net/npm/@snap/camera-kit@1.6.5/dist/index.js"
+  }
+}
+</script>
 <style>
-:root{--gold:#C9A86A;--gold2:#E8D5B5;--bg:#0A0A0B;--line:rgba(255,255,255,0.08)}
-body{font-family:'Geist',sans-serif;background:var(--bg);color:#fff;letter-spacing:-0.01em}
-.serif{font-family:'Instrument Serif',serif}
-.ar{font-family:'Tajawal',sans-serif}
-.gold{color:var(--gold)}
-.gold-bg{background:var(--gold)}
-.hair{border-color:var(--line)}
-#vip-canvas{width:100%;height:58vh;display:block;background:#000;border-radius:16px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#050505;color:#fff;font-family:Arial,sans-serif;overflow:hidden}
+#vip-canvas{position:fixed;inset:0;width:100vw;height:100vh;object-fit:cover;z-index:1}
+.overlay{position:fixed;inset:0;z-index:2;pointer-events:none;display:flex;flex-direction:column;justify-content:space-between;padding:20px}
+.top-bar{display:flex;justify-content:space-between;align-items:center;pointer-events:auto}
+.logo{font-weight:900;letter-spacing:2px;background:linear-gradient(90deg,#D4AF37,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:22px}
+.badge{border:1px solid #D4AF37;padding:6px 14px;border-radius:20px;font-size:12px;color:#D4AF37}
+.bottom-bar{text-align:center;pointer-events:auto;padding-bottom:30px}
+h1{font-size:32px;margin-bottom:8px}
+h1 span{color:#D4AF37}
+p{opacity:.7;font-size:14px;margin-bottom:20px}
+#startBtn{pointer-events:auto;background:#D4AF37;color:#000;border:none;padding:16px 36px;border-radius:30px;font-weight:900;font-size:16px;cursor:pointer;box-shadow:0 10px 30px rgba(212,175,55,.4)}
+#status{margin-top:12px;font-size:12px;opacity:.6}
 </style>
 </head>
-<body class="bg-[#0A0A0B] text-white antialiased">
-<div class="sticky top-0 z-50 bg-[#0A0A0B]/90 backdrop-blur-xl border-b hair">
-  <div class="max-w-[1280px] mx-auto px-6 h-[64px] flex justify-between items-center">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center font-black text-[13px]">W</div>
-      <div><div class="font-bold text-[13px] tracking-[0.18em]">WAYZID</div><div class="text-[9px] tracking-[0.3em] text-white/40 -mt-1">PRIVATE OFFICE</div></div>
-      <span class="ml-4 hidden md:inline-flex text-[10px] tracking-widest border hair px-3 py-1 rounded-full text-white/40">EST. MECCA 2024 • VIP • CORPORATE</span>
-    </div>
-    <div class="flex items-center gap-3">
-      <span class="hidden md:flex text-[11px] text-white/40">Trusted by 12+ Corporate Partners</span>
-      <a href="#ar" class="bg-white text-black text-[12px] font-bold px-5 h-9 rounded-full flex items-center">Private Consultation</a>
-    </div>
+<body>
+<canvas id="vip-canvas"></canvas>
+<div class="overlay">
+  <div class="top-bar">
+    <div class="logo">طريقة.زيد | TAREEQAH.ZAYD</div>
+    <div class="badge">PRIVATE OFFICE • CLOCK TOWER</div>
   </div>
-</div>
-<div class="max-w-[1280px] mx-auto px-6 pt-20 pb-12 grid lg:grid-cols-12 gap-10">
-  <div class="lg:col-span-7">
-    <div class="inline-flex items-center gap-2 border hair rounded-full px-3 py-1 text-[11px]">
-      <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
-      <span class="text-white/60 tracking-wide">● AVAILABLE FOR Q4 2026 CORPORATE BOOKINGS • 3 SLOTS LEFT</span>
-    </div>
-    <h1 class="serif mt-6 text-[48px] md:text-[88px] leading-[0.9] tracking-[-0.03em]">
-      We operate<br><span class="italic font-normal gold">Umrah & Business</span><br>like a private bank<br>operates wealth.
-    </h1>
-    <p class="mt-6 text-[16px] leading-7 text-white/60 max-w-[560px]">
-      WAYZID VIP is not an agency. It's a <b class="text-white">private office</b> in Mecca for C-level executives and corporate delegations. Private aviation, Clock Tower Royal Floor, armored transport, and NUSUK clearance in 90 minutes.
-      <span class="ar block mt-4 text-white/80 font-bold text-[15px]">واجهة شركات — مكتب خاص في مكة للوفود التنفيذية والشركات العالمية. طيران خاص، برج الساعة الدور الملكي، تخليص نسك VIP.</span>
-    </p>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a href="#ar" class="gold-bg text-black font-bold px-7 h-12 rounded-full flex items-center text-[14px]">Request VIP Access →</a>
-      <div class="flex items-center gap-3 border hair rounded-full px-5 h-12 text-[11px]">
-        <div class="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center">✦</div>
-        <span class="text-white/60">Avg response: 4 min • <b class="text-white">+966592223222</b></span>
-      </div>
-    </div>
-    <div class="mt-12 grid grid-cols-3 gap-6 border-t hair pt-8 max-w-[520px]">
-      <div><div class="serif text-[32px]">47</div><div class="text-[10px] tracking-widest text-white/30 mt-1">CORPORATE DELEGATIONS / 2025</div></div>
-      <div><div class="serif text-[32px]">100%</div><div class="text-[10px] tracking-widest text-white/30 mt-1">VISA CLEARANCE RATE</div></div>
-      <div><div class="serif text-[32px]">24/7</div><div class="text-[10px] tracking-widest text-white/30 mt-1">PRIVATE CONCIERGE</div></div>
-    </div>
-  </div>
-  <div class="lg:col-span-5" id="ar">
-    <div class="rounded-[24px] bg-[#121214] border hair p-[1px] overflow-hidden">
-      <div class="bg-[#0F0F10] rounded-[23px] p-6">
-        <div class="flex justify-between items-center">
-          <div class="text-[11px] tracking-widest text-white/30">طريقة.زيد • LIVE AR</div>
-          <div class="text-[10px] gold border border-[#C9A86A]/20 px-2 py-1 rounded-full">● SNAPCHAT CAMERA KIT</div>
-        </div>
-        <div class="mt-4 rounded-[16px] overflow-hidden border hair bg-black">
-          <canvas id="vip-canvas"></canvas>
-        </div>
-        <div class="mt-3 text-[11px] text-white/40 text-center">a9a7b31b-b934-4f4e-8267-92499e567f1e • طريقة.زيد</div>
-        <div class="mt-6 space-y-3">
-          <div class="flex gap-3 p-3 rounded-xl bg-white/[0.03] border hair"><div class="w-8 h-8 rounded-full bg-white text-black flex items-center justify-center text-[12px] font-bold">J</div><div class="flex-1"><div class="text-[12px] font-bold">Jeddah → Mecca • CEO Delegation • 8 pax</div><div class="text-[11px] text-white/40 mt-1">Private G550 • Clock Tower Royal • Armored • Cleared 14:22</div></div><div class="text-[10px] text-emerald-300">EN ROUTE</div></div>
-          <div class="flex gap-3 p-3 rounded-xl bg-white/[0.03] border hair"><div class="w-8 h-8 rounded-full bg-[#C9A86A] text-black flex items-center justify-center text-[12px] font-bold">R</div><div class="flex-1"><div class="text-[12px] font-bold">Riyadh Corporate • 12 pax • Royal Floor</div><div class="text-[11px] text-white/40 mt-1">Check-in 19:00 • Private Tawaf • Clearance DONE</div></div><div class="text-[10px] text-white/40">DONE</div></div>
-        </div>
-        <div class="mt-6 grid grid-cols-2 gap-2">
-          <div class="rounded-xl bg-black border hair p-3"><div class="text-[10px] text-white/30">PRIVATE AVIATION</div><div class="text-[12px] mt-1 font-medium">JED / RUH / DXB → Private Terminal</div></div>
-          <div class="rounded-xl bg-black border hair p-3"><div class="text-[10px] text-white/30">CLOCK TOWER</div><div class="text-[12px] mt-1 font-medium">Royal Floor • 360° Haram View</div></div>
-        </div>
-        <a href="#ar" class="mt-4 w-full gold-bg text-black font-bold h-11 rounded-full flex items-center justify-center text-[13px]">👻 افتح عدسة طريقة.زيد</a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="max-w-[1280px] mx-auto px-6 py-16 border-t hair">
-  <div class="flex justify-between items-end flex-wrap gap-4">
-    <h2 class="serif text-[36px] md:text-[52px] leading-[0.9]">Corporate Services.<br><span class="italic gold">No queues. No forms.</span></h2>
-    <div class="text-[12px] text-white/40 max-w-[360px]">Built for boards, not tourists. Every step is handled by our office in Mecca — you only appear.</div>
-  </div>
-  <div class="mt-10 grid md:grid-cols-3 gap-[1px] bg-white/10 rounded-[20px] overflow-hidden p-[1px]">
-    <div class="bg-[#111113] p-7"><div class="text-[11px] tracking-widest text-white/20">01 • AVIATION</div><div class="mt-3 font-bold text-[16px]">Private Terminal & G550</div><div class="mt-2 text-[13px] text-white/50 leading-6">Jeddah private terminal, immigration on board, armored S-Class to Haram. No public airport.</div></div>
-    <div class="bg-[#111113] p-7 border-l-0 md:border-l border-white/5"><div class="text-[11px] tracking-widest text-white/20">02 • STAY</div><div class="mt-3 font-bold text-[16px]">Clock Tower — Royal Floor</div><div class="mt-2 text-[13px] text-white/50 leading-6">Suites 70-72, direct Kaaba view, private elevator, butler, executive majlis for meetings.</div></div>
-    <div class="bg-[#15130F] p-7 border-l-2 border-[#C9A86A]"><div class="text-[11px] tracking-widest gold">03 • CLEARANCE • FASTEST</div><div class="mt-3 font-black text-[16px]">NUSUK VIP in 90 Minutes</div><div class="mt-2 text-[13px] text-white/60 leading-6">Passport → Gemini Vision extraction → Nusuk → visa. Your team never touches a form. <b class="text-white">99.1% accuracy.</b></div></div>
-    <div class="bg-[#111113] p-7"><div class="text-[11px] tracking-widest text-white/20">04 • GROUND</div><div class="mt-3 font-bold text-[16px]">Armored & Executive Protection</div><div class="mt-2 text-[13px] text-white/50 leading-6">S-Class armored, close protection licensed, private Tawaf lane coordination.</div></div>
-    <div class="bg-[#111113] p-7"><div class="text-[11px] tracking-widest text-white/20">05 • BUSINESS</div><div class="mt-3 font-bold text-[16px]">Boardroom in Mecca</div><div class="mt-2 text-[13px] text-white/50 leading-6">Private majlis, Starlink, NDA, catering by Clock Tower executive chef. Close deals overlooking Haram.</div></div>
-    <div class="bg-[#111113] p-7"><div class="text-[11px] tracking-widest text-white/20">06 • CONCIERGE</div><div class="mt-3 font-bold text-[16px]">24/7 Private Office</div><div class="mt-2 text-[13px] text-white/50 leading-6">One number. One manager. All languages. <b class="text-white">+966592223222</b></div></div>
-  </div>
-</div>
-<div class="bg-white text-black">
-  <div class="max-w-[1280px] mx-auto px-6 py-14">
-    <div class="flex flex-wrap justify-between items-center gap-6">
-      <div class="text-[11px] tracking-[0.2em] text-black/40">TRUSTED BY CORPORATE DELEGATIONS FROM</div>
-      <div class="flex flex-wrap gap-8 text-[13px] font-bold tracking-wide opacity-60"><span>RIYADH HQ</span><span>DUBAI HOLDING</span><span>QATAR ENERGY</span><span>KUWAIT CORP</span><span>LONDON OFFICE</span></div>
-    </div>
-    <div class="mt-12 grid md:grid-cols-3 gap-8">
-      <div class="border border-black/10 rounded-[16px] p-6"><div class="serif text-[20px] leading-tight">“Wayzid operated our 12-person board Umrah like a state visit. No one queued.”</div><div class="mt-4 text-[11px] tracking-widest text-black/40">— CFO, RIYADH • OCT 2025</div></div>
-      <div class="border border-black/10 rounded-[16px] p-6 bg-[#F8F5EF]"><div class="serif text-[20px] leading-tight">“The 90-min NUSUK clearance is real. We landed at 2pm, prayed at 5pm.”</div><div class="mt-4 text-[11px] tracking-widest text-black/40">— MANAGING PARTNER, DXB</div></div>
-      <div class="border border-black/10 rounded-[16px] p-6"><div class="serif text-[20px] leading-tight">“Only vendor we trust for VIP corporate religious travel. Discreet.”</div><div class="mt-4 text-[11px] tracking-widest text-black/40">— CHAIRMAN OFFICE, DOHA</div></div>
-    </div>
-  </div>
-</div>
-<div class="max-w-[1280px] mx-auto px-6 py-20 grid lg:grid-cols-12 gap-10">
-  <div class="lg:col-span-6">
-    <h2 class="serif text-[44px] md:text-[64px] leading-[0.9]">Your name<br>on the door.<br><span class="italic gold">Our office<br>does the rest.</span></h2>
-    <p class="mt-6 text-white/50 text-[13px] leading-6 max-w-[420px]">WAYZID VIP Private Office — Mecca. White-label available for travel agencies serving corporate clients. You sell, we operate under your brand.</p>
-    <div class="mt-8 flex gap-3">
-      <a href="#ar" class="bg-white text-black font-bold px-8 h-[52px] rounded-full flex items-center">Talk to Private Office →</a>
-      <div class="border hair rounded-full px-5 h-[52px] flex items-center gap-2 text-[11px]"><span class="w-2 h-2 bg-emerald-400 rounded-full"></span><span class="text-white/60">ONLINE • Snapchat AR Active</span></div>
-    </div>
-  </div>
-  <div class="lg:col-span-6">
-    <div class="rounded-[20px] bg-[#121214] border hair p-8">
-      <div class="text-[11px] tracking-widest text-white/30">REQUEST CORPORATE ACCESS</div>
-      <div class="mt-6 grid grid-cols-2 gap-3">
-        <div class="bg-black border hair rounded-xl p-4"><div class="text-[10px] text-white/30">PACKAGE</div><div class="mt-1 font-bold text-[13px]">Royal Corporate • 8-15 pax</div><div class="mt-1 text-[11px] text-white/40">6,800 - 12,500 SAR / person</div></div>
-        <div class="bg-black border hair rounded-xl p-4"><div class="text-[10px] text-white/30">INCLUDES</div><div class="mt-1 font-bold text-[13px]">Aviation + Royal Floor + NUSUK VIP</div><div class="mt-1 text-[11px] gold">Priority Lane</div></div>
-      </div>
-      <div class="mt-4 bg-[#C9A86A]/10 border border-[#C9A86A]/20 rounded-xl p-4 flex justify-between items-center">
-        <div><div class="font-bold text-[13px]">White-Label for Agencies</div><div class="text-[11px] text-white/50">You keep client, we operate as your Mecca office. 30% margin.</div></div>
-        <span class="text-[10px] bg-[#C9A86A] text-black px-3 py-1 rounded-full font-bold">B2B</span>
-      </div>
-      <a href="#ar" class="mt-6 w-full bg-white text-black font-bold h-12 rounded-full flex items-center justify-center">👻 جرب عدسة طريقة.زيد الآن</a>
-      <div class="mt-3 text-center text-[10px] text-white/20">© 2026 WAYZID PRIVATE OFFICE • MECCA • wayzid.github.io/vip.html</div>
-    </div>
+  <div class="bottom-bar">
+    <h1>NUSUK <span>VIP</span> PRIVATE OFFICE</h1>
+    <p>عدسة طريقة.زيد الرسمية - مكة المكرمة - برج الساعة</p>
+    <button id="startBtn">تفعيل العدسة 👻</button>
+    <div id="status">تم ربط حساب المطور بنجاح</div>
   </div>
 </div>
 <script type="module">
-import { bootstrapCameraKit } from "https://cdn.jsdelivr.net/npm/@snap/camera-kit@1.9.0/+esm";
-const apiToken = "REPLACE_WITH_YOUR_API_TOKEN";
+import { bootstrapCameraKit } from "@snap/camera-kit";
+const apiToken = "eyJhbGciOiJIUzI1NiIsImtpZCI6IkNhbnZhc1MyU0hNQUNQcm9kIiwidHlwIjoiSldUIn0.eyJhdWQiOiJjYW52YXMtY2FudmFzYXBpIiwiaXNzIjoiY2FudmFzLXMyc3Rva2VuIiwibmJmIjoxNzgyMjUwODE0LCJzdWIiOiI5OGEzNTdiOC1iYThjLTRiMGQtYmFlMC1jMmVkNWYwYWEzZWV-UFJPRFVDVElPTn41OWMyNDkyNi1jMDRjLTRkNmYtYTE4Yi04MTBjODc0MGJiMjYifQ.sXtTVLvaUNyKp0yRD6zfmCvQmGFD3DJgXRw1J63vHZE";
 const lensGroupId = "a9a7b31b-b934-4f4e-8267-92499e567f1e";
-try {
-  const cameraKit = await bootstrapCameraKit({ apiToken });
-  const session = await cameraKit.createSession(document.getElementById('vip-canvas'));
-  const lensGroup = await cameraKit.lensRepository.loadLensGroup(lensGroupId);
-  if (lensGroup.lenses && lensGroup.lenses.length > 0) {
-    session.applyLens(lensGroup.lenses[0]);
+const canvas = document.getElementById('vip-canvas');
+const btn = document.getElementById('startBtn');
+const status = document.getElementById('status');
+let session;
+async function start() {
+  try {
+    btn.innerText = "جاري التشغيل...";
+    status.innerText = "جاري تحميل Camera Kit...";
+    const cameraKit = await bootstrapCameraKit({ apiToken });
+    status.innerText = "جاري طلب الكاميرا...";
+    session = await cameraKit.createSession({ liveRenderTarget: canvas });
+    const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true });
+    await session.setSource(mediaStream);
+    status.innerText = "جاري تحميل عدسة طريقة.زيد...";
+    const { lenses } = await cameraKit.lensRepository.loadLensGroups([lensGroupId]);
+    if (lenses && lenses.length > 0) {
+      await session.applyLens(lenses[0]);
+      status.innerText = "✅ العدسة شغالة - طريقة.زيد";
+      btn.style.display = "none";
+    } else {
+      status.innerText = "⚠️ ما لقى العدسة - فعلها من my-lenses";
+    }
+    await session.play();
+  } catch (e) {
+    console.error(e);
+    status.innerText = "خطأ: " + e.message;
+    btn.innerText = "حاول مرة ثانية";
   }
-  await session.play('user');
-} catch (e) {
-  console.log("Camera Kit needs API Token:", e);
-  document.getElementById('vip-canvas').outerHTML = '<div style="height:58vh;display:flex;align-items:center;justify-content:center;background:#111;color:#C9A86A;border-radius:16px;border:1px solid rgba(255,255,255,0.08);font-family:monospace;font-size:12px;text-align:center;padding:20px">👻 عدسة طريقة.زيد جاهزة<br><br>حط الـ API Token في الكود فوق<br>lens: a9a7b31b-b934-4f4e-8267-92499e567f1e</div>';
 }
+btn.addEventListener('click', start);
 </script>
 </body>
 </html>
