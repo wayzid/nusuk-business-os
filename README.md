@@ -1,7 +1,6 @@
-# NUSUK OS
-Live: https://wayzid.github.io/nusuk-business-os/
-VIP: https://wayzid.github.io/nusuk-business-os/vip.html
+# NUSUK OS 👑
 
-Agentic Business OS for Umrah agencies powered by Gemini 2.5 Pro Passport Vision + autonomous WhatsApp sales.
+Agentic OS for Umrah agencies — Passport Vision + WhatsApp Sales.
+Powered by Gemini 2.5 Pro | Built in Makkah
 
-Built solo by Yazeed - Founder @ way.zid
+🔗 linktr.ee/wayzid
