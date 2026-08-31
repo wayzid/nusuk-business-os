@@ -6,4 +6,4 @@ Agentic OS for Umrah agencies – Passport Vision + WhatsApp Sales
 Powered by Gemini 2.5 Pro | Built in Makkah
 
 🔗 https://wayzid.github.io/nusuk-business-os/
-📱 0592223222 | https://linktr.ee/wayzid@outlook.sa
+📱 0592223222                              https://linktr.ee/wayzid@outlook.sa
